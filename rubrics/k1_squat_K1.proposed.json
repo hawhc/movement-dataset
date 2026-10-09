@@ -1,0 +1,191 @@
+{
+ "_note": "由細路常模導出嘅建議門檻，未經人手審批，唔好直接覆蓋現行準則",
+ "movement_key": "k1_squat",
+ "grade": "K1",
+ "n_subjects": 31,
+ "sufficient": true,
+ "rows": [
+  {
+   "label": "深蹲深度",
+   "points": 25,
+   "metric": "squat_knee_min_deg",
+   "companion": "squat_hip_min_deg",
+   "direction": "lower",
+   "bands": {
+    "full": 59.7,
+    "partial": 85.8
+   },
+   "bands_source": "常模 p25/p75 (n=25)",
+   "docx": "θ_hip 最低點（23-25-27）越低越好：明顯低蹲 25｜中等 16–22｜過高 0–12",
+   "bands_rationale": "docx 冇數字。md 標 θ_hip 但關鍵點 23-25-27＝膝角，跟關鍵點（同 K3 深蹲跳）；真髖角同時出做旁證。",
+   "origin": "每次深蹲最低點膝角，取中位。",
+   "norm_n25": "p10 50.9 / p25 59.73 / p50 70.75 / p75 85.76 / p90 98.46",
+   "scoring": {
+    "full_points": 25,
+    "partial_range": [
+     16,
+     22
+    ],
+    "zero_range": [
+     0,
+     12
+    ],
+    "floor": 98.46
+   },
+   "proposed": {
+    "full": 61.03,
+    "partial": 88.45
+   },
+   "proposed_from": [
+    "p25",
+    "p75"
+   ],
+   "n_subjects": 28
+  },
+  {
+   "label": "膝蓋對齊",
+   "points": 25,
+   "metric": "knee_align_deg",
+   "direction": "lower",
+   "bands": {
+    "full": 12,
+    "partial": 18
+   },
+   "bands_source": "docx",
+   "docx": "θ_align <12°：25｜12–18°：16–22｜>18°：0–12",
+   "bands_rationale": "docx 喺 25 位細路分到 52%／28%／20% —— 保留。",
+   "origin": "膝→踝 喺受測者額狀面相對垂直嘅傾角，較差一邊；只計每次最深 30% 幀。COCO-17 冇腳尖，用腳踝（k1_squat.py 同一做法）。",
+   "norm_n25": "p10 7.21 / p25 9.05 / p50 12.17 / p75 19.26 / p90 20.88",
+   "scoring": {
+    "full_points": 25,
+    "partial_range": [
+     16,
+     22
+    ],
+    "zero_range": [
+     0,
+     12
+    ],
+    "floor": 20.88
+   },
+   "proposed": {
+    "full": 9.04,
+    "partial": 19.19
+   },
+   "proposed_from": [
+    "p25",
+    "p75"
+   ],
+   "n_subjects": 28
+  },
+  {
+   "label": "腳跟落地",
+   "points": 20,
+   "metric": "heel_lift_pct",
+   "direction": "lower",
+   "bands": {
+    "full": 2,
+    "partial": 10
+   },
+   "bands_source": "人手（docx 文字對應）",
+   "docx": "全程着地：20｜輕微離地：12–17｜明顯離地：0–10",
+   "bands_rationale": "「全程着地」＝ ≤2% 深蹲幀腳跟離地（容許短暫丟失，md 表頭寫明）；「輕微」＝ ≤10%。分到 54%／25%／21%。",
+   "origin": "COCO-17 冇腳跟：蹲低期間任何一邊腳踝升高 >0.09 肩寬（相對企直時）嘅幀比例（k1_squat.py 實測掃出嘅門檻）。",
+   "norm_n24": "p10 0.0 / p25 0.0 / p50 2.78 / p75 6.82 / p90 13.18",
+   "scoring": {
+    "full_points": 20,
+    "partial_range": [
+     12,
+     17
+    ],
+    "zero_range": [
+     0,
+     10
+    ],
+    "floor": 13.18
+   },
+   "proposed": {
+    "full": 0.0,
+    "partial": 7.14
+   },
+   "proposed_from": [
+    "p25",
+    "p75"
+   ],
+   "n_subjects": 27
+  },
+  {
+   "label": "軀幹控制",
+   "points": 15,
+   "metric": "trunk_lat_p90_deg",
+   "companion": "trunk_p90_deg",
+   "direction": "lower",
+   "bands": {
+    "full": 12,
+    "partial": 18
+   },
+   "bands_source": "人手（量度精度）",
+   "docx": "θ_vert <18°：15｜18–25°：9–13｜>25°：0–7",
+   "bands_rationale": "正面機位 θ_vert 只見到左右傾（深蹲前傾 3D p50 48°，卡總傾角會九成零分）。2026-09-25 改用全場共用地面之後，左右傾 p25–p75 只差 2.8°（6.6–9.4°），低過量度誤差 —— 呢列喺 K1 深蹲真係分唔到人（細路蹲落去好少側傾）。保留 12°／18° 只捉明顯側傾，84% 滿分。",
+   "origin": "肩髖軀幹向量偏離前後垂直平面嘅角度 p90（每次深蹲），取中位。",
+   "norm_n25": "p10 5.26 / p25 6.6 / p50 8.15 / p75 9.36 / p90 16.21",
+   "scoring": {
+    "full_points": 15,
+    "partial_range": [
+     9,
+     13
+    ],
+    "zero_range": [
+     0,
+     7
+    ],
+    "floor": 31.24
+   },
+   "proposed": {
+    "full": 6.52,
+    "partial": 9.49
+   },
+   "proposed_from": [
+    "p25",
+    "p75"
+   ],
+   "n_subjects": 28
+  },
+  {
+   "label": "整體穩定",
+   "points": 15,
+   "metric": "hip_sway_lat_pct_leg",
+   "direction": "lower",
+   "bands": {
+    "full": 13.8,
+    "partial": 28.1
+   },
+   "bands_source": "常模 p25/p75 (n=25)",
+   "docx": "ΔX_hip <10cm：15｜10–14cm：9–13｜>14cm：0–7",
+   "bands_rationale": "docx 用 cm，公制錨點未定案；改 %腿長 常模。",
+   "origin": "每次深蹲期間髖部左右擺幅 ÷ 腿長，取中位。",
+   "norm_n25": "p10 9.42 / p25 13.89 / p50 18.23 / p75 26.02 / p90 41.55",
+   "scoring": {
+    "full_points": 15,
+    "partial_range": [
+     9,
+     13
+    ],
+    "zero_range": [
+     0,
+     7
+    ],
+    "floor": 41.55
+   },
+   "proposed": {
+    "full": 11.11,
+    "partial": 25.86
+   },
+   "proposed_from": [
+    "p25",
+    "p75"
+   ],
+   "n_subjects": 28
+  }
+ ]
+}

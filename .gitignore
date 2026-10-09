@@ -1,0 +1,28 @@
+# Participant datasets and local session/review records
+/data/
+/norms/
+/review/
+/sessions/
+/rois/
+/recordings/
+/results/
+
+# Local credentials, environments, caches and generated media
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+.DS_Store
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.venv/
+venv/
+*.log
+*.mp4
+*.mov
+*.avi
+*.mkv
+*.pt
+*.onnx

@@ -1,0 +1,179 @@
+{
+ "_note": "現行準則 = 《K1_Physical_Assessment_Criteria_Optimized.md》上學期 靈活移動 第 3 條「繞過小欄杆｜拍攝角度：正面 / 45°｜物件：Hurdle BB」，五條 25/25/20/15/15 = 100。常模底：30 段錄影（2026-09-18 s9／s10／s11）、31 位受測者。用戶手畫 ROI yyc_k1_20260918＋2D 企姿守門自標定。",
+ "movement_key": "k1_hurdle_weave",
+ "movement_label": "K1 繞過小欄杆",
+ "grade": "K1",
+ "total": 100,
+ "not_measurable": [],
+ "did_not_perform": {
+  "score": 15,
+  "label": "鼓勵分（有參與，未做到動作）",
+  "note": "冇做到動作 = 家族前置閘判定（見 applies_when）。唔入常模；總分直接 15，唔逐列計。",
+  "applies_when": "沿路線行程 < 150% 腿長，或者轉彎 < 2 次",
+  "decided_by": "用戶 2026-09-25：冇做到動作只畀 15/100 鼓勵分，只套用 K1"
+ },
+ "_teacher_reference": "用戶：rec_20260918_144607「the best one」。核對：與欄杆距離 37.6% 腿長（正正中位）、0 次碰欄杆、5 個欄杆都經過；轉彎流暢度好過 65% 細路、有方向的流暢度好過 77%。",
+ "_hurdles": "hurdle3d.py（2026-09-25）：equipment 模型冇 hurdle 類，改用顏色 —— 同場幾條片中位幀 → HSV 紅色 → 投地面 → ≥3 台確認。分類：兩隻腳橫跨白膠紙（闊 0.62–0.69m）＝欄杆；得一隻腳：底座沿行進方向長（沿線 0.16–0.24m、橫 0.04–0.12m）＝欄杆，圓底（橫 ≥ 沿線）＝雪糕筒；貼住條線中間嘅窄組＝起點／終點雪糕筒。三場 × 兩台機重投影核過，每場定位到 5 個欄杆（最遠嗰個有時被細路擋住未偵測到）。試過而唔用：線走廊放寬到 ≥2 台（出鬼影）、頭尾間距（欄杆間距由近至遠 1.14→0.92m 漸變，分唔開筒）、白膠紙範圍（起點筒啱啱喺膠紙盡頭旁邊）。",
+ "_bands_method": "2026-09-25 由用戶授權「根據學生表現改善準則」。原則：(1) docx 仲分得開人就保留；(2) 否則常模 p25/p75；(3) 唔幼過量度精度。樣本 26–31 位 sufficient。",
+ "rows": [
+  {
+   "label": "轉彎流暢度",
+   "points": 25,
+   "metric": "turn_speed_ratio",
+   "direction": "higher",
+   "bands": {
+    "full": 1.0,
+    "partial": 0.85
+   },
+   "bands_source": "人手（物理意義）",
+   "docx": "轉彎時 t_pause + 髖部旋轉順暢 順暢：25｜輕微停頓：16–22｜明顯停頓：0–12",
+   "bands_rationale": "轉彎 ±0.25s 平均速度 ÷ 全程中位速度。≥1.0＝轉彎冇減速（順暢）；0.85–1.0＝輕微減速；<0.85＝明顯慢落。常模 p75/p25（1.2／0.97）會扣埋轉彎冇減速嘅細路（1.0–1.2 只係轉彎比直路仲快，唔係更順）。分到 55%／39%／6%。",
+   "norm_n31": "p10 0.9 / p25 0.98 / p50 1.05 / p75 1.2 / p90 1.41",
+   "origin": "細路轉彎唔會完全停，係減速 —— 舊定義（轉彎停頓秒數）31 位 p90 都得 0.05s，分唔到人。",
+   "zero_if": {
+    "metric": "falls",
+    "at_least": 1
+   },
+   "zero_if_note": "用戶 2026-09-25：跌倒都要扣轉彎流暢度 → 有跌（falls ≥ 1）直接零分檔，唔理轉彎速度。144136#0 跌完爬起身衝過個彎，速度比讀 1.29（本來滿分）。",
+   "scoring": {
+    "full_points": 25,
+    "partial_range": [
+     16,
+     22
+    ],
+    "zero_range": [
+     0,
+     12
+    ],
+    "floor": 0.7,
+    "zero_if_points": 6
+   }
+  },
+  {
+   "label": "與欄杆距離",
+   "points": 25,
+   "metric": "hurdle_contacts",
+   "companion": "hurdle_clearance_pct_leg",
+   "direction": "lower",
+   "bands": {
+    "full": 0,
+    "partial": 0
+   },
+   "bands_source": "docx 結構",
+   "docx": "D_body-hurdle + IsContact 良好：25｜偏差大：15–22｜碰撞：0–12",
+   "bands_rationale": "docx：碰撞＝最低一檔。任何一次碰欄杆（腳踝水平離欄杆線段 < 15% 腿長 ≥ 2 幀）→ 零分檔；冇碰：與欄杆距離 ≤ p90（52.9% 腿長）＝滿分，> p90（兜大圈、偏差大）＝部分。分到約 61%／13%／26%。",
+   "partial_if": {
+    "metric": "hurdle_clearance_pct_leg",
+    "above": 52.9
+   },
+   "norm_n31": "contacts: p50 0 / p75 0.5 / p90 1 ；clearance: p10 26.68 / p25 30.25 / p50 37.55 / p75 43.69 / p90 52.94 %腿長",
+   "origin": "每個欄杆（細路喺佢 ±0.5m 範圍時）腳踝最近距離，取中位；碰撞事件逐幀計。兩個碰撞例子（144446 f174 最後一個欄杆角、144952 f98 第三個欄杆側）已睇片核實。",
+   "scoring": {
+    "full_points": 25,
+    "partial_range": [
+     15,
+     22
+    ],
+    "zero_range": [
+     0,
+     12
+    ],
+    "count_points": [
+     25,
+     12,
+     6,
+     0
+    ],
+    "partial_if_floor": 72.8
+   }
+  },
+  {
+   "label": "身體穩定",
+   "points": 20,
+   "metric": "falls",
+   "companion": "fall_longest_s",
+   "direction": "lower",
+   "bands": {
+    "full": 0,
+    "partial": 0
+   },
+   "bands_source": "人手（用戶定義）",
+   "docx": "轉彎後 ΔX_hip <11cm：20｜11–15cm：12–17｜>15cm：0–10",
+   "bands_rationale": "用戶 2026-09-25：身體穩定＝轉彎時能唔能夠保持平衡，例如有細路轉彎時跌落地。跌倒 → 零分檔；冇跌 → 滿分。部分檔（踏錯步／扶欄杆但冇跌）暫時冇樣本、冇量度，留空。31 位分到 97%／0%／3%。",
+   "definition": "跌倒 = 繞欄杆期間髖高（離地）< 企直髖高 60%，持續 ≥ 0.5s。",
+   "validation": "睇片核：rec_20260918_144136#0 f99 起喺欄杆旁邊四腳着地 1.6s（真跌）。其餘 30 位最長低髖 0.3s；144410／144952／144649／145334 嘅短暫讀數睇片全部企直（3D 抖動），0.5s 門檻分得開。",
+   "origin": "舊定義 post_turn_jitter_pct_leg（髖路徑高頻抖動）同軀幹擺幅都唔用：前者 31 位中位 0，後者罰繞得快嘅細路。",
+   "scoring": {
+    "full_points": 20,
+    "partial_range": [
+     12,
+     17
+    ],
+    "zero_range": [
+     0,
+     10
+    ],
+    "count_points": [
+     20,
+     5,
+     0
+    ]
+   }
+  },
+  {
+   "label": "步伐規律性",
+   "points": 15,
+   "metric": "cycle_cv_pct",
+   "direction": "lower",
+   "bands": {
+    "full": 25.6,
+    "partial": 43.3
+   },
+   "bands_source": "常模 p25/p75 (n=26)",
+   "docx": "橫移時髖部位移規律 良好：15｜一般：9–13｜混亂：0–7",
+   "bands_rationale": "docx 冇數字。",
+   "norm_n26": "p10 19.26 / p25 25.56 / p50 33.55 / p75 43.26 / p90 48.11 %",
+   "origin": "繞欄杆期間左膝抬週期 CV（_cycles，最短 7 幀）。",
+   "scoring": {
+    "full_points": 15,
+    "partial_range": [
+     9,
+     13
+    ],
+    "zero_range": [
+     0,
+     7
+    ],
+    "floor": 48.11
+   }
+  },
+  {
+   "label": "有方向的流暢度",
+   "points": 15,
+   "metric": "longest_pause_s",
+   "direction": "lower",
+   "bands": {
+    "full": 0.53,
+    "partial": 1.95
+   },
+   "bands_source": "常模 p25/p75 (n=31)",
+   "docx": "整體移動 t_pause <0.6s 良好：15｜一般：9–13｜差：0–7",
+   "bands_rationale": "docx 0.6s／1.0s 令 55% 零分（偏嚴，K1 細路繞欄杆中途會停下望路）。用 p25/p75；滿分線 0.53s 同 docx 0.6s 差唔多。",
+   "norm_n31": "p10 0.25 / p25 0.53 / p50 1.05 / p75 1.95 / p90 2.25 s",
+   "origin": "沿路線前進速度（5 幀中位濾波）慢過自己 p75 嘅 20% 當停頓，取最長一段。",
+   "scoring": {
+    "full_points": 15,
+    "partial_range": [
+     9,
+     13
+    ],
+    "zero_range": [
+     0,
+     7
+    ],
+    "floor": 2.25
+   }
+  }
+ ],
+ "_scoring_method": "2026-09-25 用戶揀分檔內按比例（option 2）：部分檔按貼近滿分門檻嘅程度落 docx 部分範圍；零分檔由範圍頂跌到底線 floor（全班 p10／p90）先 0 分。計數類（掉球／碰欄杆／跌倒）用 count_points 逐次定分，每多一次都扣。"
+}

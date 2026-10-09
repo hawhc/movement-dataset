@@ -1,0 +1,103 @@
+{
+ "_note": "現行準則 = 《K3_Physical_Assessment_Criteria_Optimized.md》下學期 手腳協調 第 3 條「跳繩完整動作（連續）｜拍攝角度：正面」（不偵測繩子；只用身體關鍵點判斷連續跳），五條 25/20/20/20/15 = 100。⚠ 上學期第 3 條同名（跳繩完整動作），差率門檻 <15%；資料夾寫「（連續）」＝下學期 <12%。常模底：18 段錄影、31 位受測者（排除 38 條大人／碎片軌跡；rec_20260915_155110 全部斷成碎片，0 位入常模）（s4 10 條借深蹲跳標定 a188f9ce、s17 8 條借敏捷梯標定 c1cb31af），s18/s19 3 條冇同場標定可借、未入庫。bands 全部 null —— 門檻要由常模導出。",
+ "movement_key": "k3_jump_rope_continuous",
+ "movement_label": "K3 跳繩完整動作（連續）",
+ "grade": "K3",
+ "total": 100,
+ "not_measurable": [],
+ "did_not_perform": {
+  "score": null,
+  "label": "基礎階段（有參與，未做到動作）",
+  "note": "⚠ 未定。",
+  "applies_when": "jumps_total < 2（兩踝同時離地 + 髖高過企直基線嘅事件少過 2 次）"
+ },
+ "_jump_definition": "跳 = 兩踝**同時**離開企直踝高 >4cm **而且** 髖高過企直基線 >3% 腿長，持續 2 幀（0.1s）到 0.6s，髖升幅 ≥5% 腿長。2026-09-23 對片（rec_20260915_101628 cam03 逐 3 幀）：右邊細路 138/156/174/192 幀清楚雙腳離地，中間仲有一下細跳（雙拍）；左邊細路大部分係跨繩（一腳抬 20–40cm、一腳踩地、膝屈 90–130°）—— 淨睇腳踝會當跳，要兩踝都離地先算。相隔 ≤1.5s 嘅起跳當同一段連續。",
+ "_scale_caveat": "同其他 K3 動作一樣：公制錨點未定案（肩寬 vs 球／筒錨點爭約 1.4 倍）。評分列一律用次數、百分比、÷腿長或 ÷軀幹長，唔用 cm。",
+ "_quality": "兩個細路同場跳。企得遠嗰個喺部分片會被斷成幾段（rec_20260915_102255：黃衫細路斷成 3 段、腿長讀 63cm vs 同場 72cm、企姿 2.0）。ingest.py 對原地類加咗碎片守門：少過一半幀 → suspect，常模排除。",
+ "rows": [
+  {
+   "label": "連續跳次數",
+   "points": 25,
+   "metric": "jump_streak_max",
+   "companion": "jumps_total",
+   "direction": "higher",
+   "bands": {
+    "full": 5,
+    "partial": 4
+   },
+   "docx": "N_jump（明顯離地次數）≥5：25｜4：18–22｜<4：0–15",
+   "origin": "最長連續段嘅跳躍數（相隔 ≤1.5s）。docx 嘅 ≥5／4 係次數，唔受 2D/3D 或公制影響，可以考慮直接沿用 —— 但要睇常模：如果大部分細路都 ≥5，呢列就分唔到高低。",
+   "bands_source": "docx",
+   "bands_rationale": "docx ≥5／4 喺 31 位細路分到 29%／32%／39%，而且係次數、唔受公制錨點影響 —— 保留。",
+   "norm_n31": "p10 2.0 / p25 3.0 / p50 4.0 / p75 5.5 / p90 7.0"
+  },
+  {
+   "label": "跳躍節奏",
+   "points": 20,
+   "metric": "jump_interval_cv_pct",
+   "companion": "jump_interval_s",
+   "direction": "lower",
+   "bands": {
+    "full": 16.4,
+    "partial": 39.7
+   },
+   "docx": "跳躍週期差率 <8%：20｜8–12%：12–17｜>12%：0–10",
+   "origin": "所有 ≥3 下連續段入面嘅起跳間距 CV（至少 3 個間距）。⚠ 20fps 量化底噪：間距 0.45s = 9 幀，±1 幀已經係 ±11%，docx 個 8% 滿分線低過取樣精度。",
+   "bands_source": "常模 p25/p75 (n=20)",
+   "bands_rationale": "docx 8%／12% 令 90% 細路零分；而且 8% 低過 20fps 量化底噪（±1 幀 ≈ ±11%）。改用 p25/p75。",
+   "if_missing": {
+    "when": "jump_streak_max < 4",
+    "band": "零分",
+    "why": "差率要 ≥3 個連續間距（即一段 ≥4 下連續跳）先計得。讀唔到係因為細路未做到 4 下連續跳 —— 係表現造成，唔係量唔到；連續都未做到，節奏無從談起。實測 31 位入面 11 位屬呢種。"
+   },
+   "norm_n20": "p10 12.9 / p25 16.36 / p50 26.31 / p75 39.66 / p90 51.03"
+  },
+  {
+   "label": "落地穩定",
+   "points": 20,
+   "metric": "landing_sway_lat_pct_leg",
+   "direction": "lower",
+   "bands": {
+    "full": 6.2,
+    "partial": 9.7
+   },
+   "docx": "落地後 ΔX_hip <6cm：20｜6–9cm：12–17｜>9cm：0–10",
+   "origin": "每次落地到下一跳（最多 0.5s）髖嘅左右擺幅 ÷ 腿長，取中位。左右軸由受測者自己肩線定（正面機位嘅 ΔX）。唔用 1s 窗口 —— 連續跳 0.45s 就起下一跳。",
+   "bands_source": "常模 p25/p75 (n=31)",
+   "bands_rationale": "docx 用 cm（6／9cm），公制錨點未定案；改用 %腿長 常模。",
+   "norm_n31": "p10 5.58 / p25 6.22 / p50 8.0 / p75 9.65 / p90 10.57"
+  },
+  {
+   "label": "手臂擺動",
+   "points": 20,
+   "metric": "wrist_spread_torso",
+   "direction": "lower",
+   "bands": {
+    "full": 1.37,
+    "partial": 1.67
+   },
+   "docx": "手腕軌跡穩定性：穩定：20｜一般：12–17｜混亂：0–10",
+   "origin": "所有跳躍（每下 ±5 幀）期間，手腕（兩手中點）相對髖位置離中位嘅 p90 距離 ÷ 軀幹長。穩定搖繩 = 手喺身側細圈；亂揮 = 散。docx 冇數字，門檻要由數據定。",
+   "bands_source": "常模 p25/p75 (n=30)",
+   "bands_rationale": "docx 只有文字（穩定／一般／混亂）。",
+   "norm_n30": "p10 1.22 / p25 1.37 / p50 1.57 / p75 1.67 / p90 1.76"
+  },
+  {
+   "label": "軀幹穩定",
+   "points": 15,
+   "metric": "torso_lat_range_pct_leg",
+   "companion": "trunk_lateral_range_deg",
+   "direction": "lower",
+   "bands": {
+    "full": 10.97,
+    "partial": 17.02
+   },
+   "docx": "ΔX_torso <5cm：15｜5–8cm：9–13｜>8cm：0–7",
+   "origin": "所有跳躍（每下 ±5 幀）期間，肩中點**相對髖中點**嘅左右擺幅（p90−p10）÷ 腿長。唔用絕對位置：細路跳跳下會成個人橫移，實測讀到 268% 腿長（= 1.9m 行位）。角度版 trunk_lateral_range_deg 一齊出。",
+   "bands_source": "常模 p25/p75 (n=31)",
+   "bands_rationale": "docx 用 cm（5／8cm）；改用 %腿長 常模。",
+   "norm_n31": "p10 9.97 / p25 10.97 / p50 13.27 / p75 17.02 / p90 19.06"
+  }
+ ],
+ "_bands_method": "2026-09-23 由用戶授權「根據學生表現改善準則」。原則：(1) docx 門檻喺細路數據上仲分得開人（冇一格 ≥80%）就保留 docx；(2) 否則用細路常模 p25/p75（≈ 25% 滿分／50% 部分／25% 零分）；(3) 門檻唔可以幼過量度精度（例：20fps 節奏 CV 底噪 ±11%；3D 軀幹角誤差約 2–3°）；(4) 樣本 31 位 sufficient。"
+}

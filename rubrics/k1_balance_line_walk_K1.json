@@ -1,0 +1,169 @@
+{
+ "_note": "現行準則 = 《K1_Physical_Assessment_Criteria_Optimized.md》上學期 平衡能力 第 2 條「平衡線前行｜拍攝角度：正面 / 45°｜物件：Line BB」，五條 25/25/20/15/15 = 100。常模底：21 段錄影、21 位受測者（09-16 10 條：s26 2＋s27 6 各自自標定、s28 2 條三機重建；09-18 11 條：用戶手畫 ROI yyc_k1_20260918＋2D 企姿守門，借同場繞欄杆 rec_20260918_144649 嘅標定）。sufficient。",
+ "movement_key": "k1_balance_line_walk",
+ "movement_label": "K1 平衡線前行",
+ "grade": "K1",
+ "total": 100,
+ "not_measurable": [],
+ "did_not_perform": {
+  "score": 15,
+  "label": "鼓勵分（有參與，未做到動作）",
+  "note": "冇做到動作 = 家族前置閘判定（見 applies_when）。唔入常模；總分直接 15，唔逐列計。",
+  "applies_when": "髖部投影落喺線段範圍內少過 1 秒",
+  "decided_by": "用戶 2026-09-25：rec_20260915_145210 紅衫女仔（#1）全程冇蹲，「表現差，冇郁過，只可以畀少少鼓勵分」→ 15/100，只套用 K1"
+ },
+ "_line": "條線由 line3d.py 重建：每台機中位幀 top-hat 搵白膠紙 → 去畸變射線投地面 → ≥3 台確認格 → RANSAC 直線。7 條片線長 4.42–4.84m（互相一致）、殘差中位 1.2–1.7cm；地面高度自動掃出係腳踝平面下 7–10cm＝腳踝關節真實離地高度，即係四台機喺啱嘅高度疊得最埋，方法自己驗證自己。rec_20260916_142222 自己只搵到 1.19m（細路大部分時間喺線旁邊行，搜索範圍係腳步路徑 0.5m 內），同場同一份標定（md5 180ff5c0），條膠紙冇郁過，所以用 142131 嗰條。 09-18 s11：淺藍地面一樣搵到（10/11 條，殘差 1.4–1.6cm、地面＝腳踝平面下 8–10cm）；同場共用最完整嗰條（rec_20260918_151119，4.90m）。",
+ "_scale_anchor": "⚠ 條膠紙係已知尺寸物件嘅好機會：現場用尺量一次條線有幾長，就可以直接核實（或者取代）肩寬錨點 SHOULDER_CM[K1]=26。而家線長 4.4–4.8m 係用肩寬錨點換算出嚟嘅。",
+ "_review": "已解決（2026-09-23）：rec_20260916_142222 同 142900 兩位都讀 foot_on_line_pct 0%。將 3D 條線同受測者髖／腳踝重投影返落影片核對：條線（洋紅）喺三條片都啱啱壓住白膠紙；142441（正常）腳踝沿住條線；142222／142900 嘅髖軌跡喺每台機都平行於膠紙、偏咗一邊 —— 即係細路真係行喺條線旁邊。讀數係真，唔使排除；正正係「平衡線控制」要扣嘅嘢。",
+ "rows": [
+  {
+   "label": "平衡線控制",
+   "points": 25,
+   "metric": "foot_on_line_pct",
+   "companion": "foot_line_dist_pct_leg",
+   "direction": "higher",
+   "bands": {
+    "full": 74.5,
+    "partial": 49.0
+   },
+   "docx": "d_line（允許輕微偏離）多數時間接近線上 良好：25｜一般：16–22｜明顯偏離：0–12",
+   "origin": "支撐腳（踝高 < 企直踝高 +3cm＝踩實地）投影到地面，離 3D 條線嘅垂直距離；「接近線上」＝ <15% 腿長（≈ K1 細路一隻半腳闊）。主指標係接近線上幀嘅百分比（docx「多數時間」），距離中位做旁證。",
+   "bands_source": "常模 p75/p25 (n=19)",
+   "bands_rationale": "docx 只有文字（多數時間接近線上）。",
+   "norm_n19": "p10 33.55 / p25 48.98 / p50 54.29 / p75 74.46 / p90 79.96",
+   "scoring": {
+    "full_points": 25,
+    "partial_range": [
+     16,
+     22
+    ],
+    "zero_range": [
+     0,
+     12
+    ],
+    "floor": 33.55
+   }
+  },
+  {
+   "label": "身體直線度",
+   "points": 25,
+   "metric": "hip_line_range_pct_leg",
+   "companion": "hip_line_offset_pct_leg",
+   "direction": "lower",
+   "bands": {
+    "full": 20.4,
+    "partial": 38.3
+   },
+   "docx": "ΔX_hip <11cm：25｜11–15cm：16–22｜>15cm：0–12",
+   "origin": "髖部離條線嘅左右距離（有正負）p90−p10 ÷ 腿長。用條線做參考比擬合自己路徑準：佢量嘅係「離條線搖幾多」，唔係「自己條路直唔直」。",
+   "bands_source": "常模 p25/p75 (n=19)",
+   "bands_rationale": "docx 用 cm（11／15cm），公制錨點未定案。",
+   "norm_n19": "p10 14.08 / p25 20.41 / p50 26.81 / p75 38.34 / p90 61.66",
+   "scoring": {
+    "full_points": 25,
+    "partial_range": [
+     16,
+     22
+    ],
+    "zero_range": [
+     0,
+     12
+    ],
+    "floor": 61.66
+   }
+  },
+  {
+   "label": "步伐規律性",
+   "points": 20,
+   "metric": "cycle_cv_pct",
+   "companion": "cadence_spm",
+   "direction": "lower",
+   "bands": {
+    "full": 23.2,
+    "partial": 35.3
+   },
+   "docx": "髖部水平位移週期差 + 膝蓋起伏規律 良好：20｜一般：12–17｜混亂：0–10",
+   "origin": "線上期間左膝抬週期嘅 CV（_cycles，最短 7 幀）。n=7：兩位行得太慢／太少步切唔夠 3 個循環。",
+   "bands_source": "常模 p25/p75 (n=17)",
+   "bands_rationale": "docx 只有文字；滿分線高過 20fps 底噪 11%。",
+   "if_missing": {
+    "when": "line_covered = true 而且 cycles < 3",
+    "band": "零分",
+    "why": "線上期間切唔夠 3 個步循環 —— 細路行得好慢／停停下，係表現造成。line_covered=false（追蹤覆蓋唔夠）嗰種先係量唔到，出 None。"
+   },
+   "norm_n17": "p10 17.73 / p25 23.16 / p50 30.1 / p75 35.34 / p90 40.68",
+   "scoring": {
+    "full_points": 20,
+    "partial_range": [
+     12,
+     17
+    ],
+    "zero_range": [
+     0,
+     10
+    ],
+    "floor": 40.68
+   }
+  },
+  {
+   "label": "姿勢控制",
+   "points": 15,
+   "metric": "trunk_lateral_p90_deg",
+   "companion": "trunk_lean_p90_deg",
+   "direction": "lower",
+   "bands": {
+    "full": 8,
+    "partial": 12
+   },
+   "docx": "θ_vert <14°：15｜14–20°：9–13｜>20°：0–7",
+   "origin": "軀幹左右傾 p90（正面機位 θ_vert 其實只見到左右分量 —— 同 K3 深蹲跳一樣）。⚠ docx 14°／20° 喺呢批人人都過（p90 9.5°），照用等於送分。",
+   "bands_source": "人手（量度精度）",
+   "bands_rationale": "docx 14°／20° 令 100% 滿分；但常模 p25/p75（4.6°／6.5°）之間只差 1.9°、全組跨度 4.7°，同 3D 軀幹角誤差同一量級 —— 照百分位切等於用雜訊扣分。改成 8°／12° 只捉明顯側傾：約九成滿分，反映 K1 細路喺呢個動作本身企得直，係真實發現。 n=21 重驗：81% 滿分，照舊 —— 分唔到人係因為 K1 細路喺呢個動作真係企得直，唔係門檻鬆。",
+   "norm_n21": "p10 4.03 / p25 4.81 / p50 5.46 / p75 7.04 / p90 9.35",
+   "scoring": {
+    "full_points": 15,
+    "partial_range": [
+     9,
+     13
+    ],
+    "zero_range": [
+     0,
+     7
+    ],
+    "floor": 14.51
+   }
+  },
+  {
+   "label": "有方向的流暢度",
+   "points": 15,
+   "metric": "longest_pause_s",
+   "companion": "stall_fraction",
+   "direction": "lower",
+   "bands": {
+    "full": 0.6,
+    "partial": 1.0
+   },
+   "docx": "方向正確下 t_pause <0.6s 良好：15｜一般：9–13｜差：0–7",
+   "origin": "沿條線方向嘅前進速度（5 幀中位濾波），慢過自己 p75 嘅 20% 當停頓，取最長一段。只計線上期間。docx 0.6s 喺呢批大約係中位。",
+   "bands_source": "docx",
+   "bands_rationale": "docx 0.6s 喺 11 位細路分到 45%／36%／18% —— 保留（partial 1.0s 沿用 K1 原地跑）。",
+   "norm_n21": "p10 0.15 / p25 0.45 / p50 0.7 / p75 1.6 / p90 2.0",
+   "scoring": {
+    "full_points": 15,
+    "partial_range": [
+     9,
+     13
+    ],
+    "zero_range": [
+     0,
+     7
+    ],
+    "floor": 2.0
+   }
+  }
+ ],
+ "_coverage_gate": "line_progress_pct：髖部喺線方向實際行過幾多成條線。<50% → line_covered=false，平衡線控制／身體直線度出 None（量唔到，唔係做得差）。實測 rec_20260916_142522#1 41% 被擋。",
+ "_bands_method": "2026-09-23 由用戶授權「根據學生表現改善準則」。原則：(1) docx 門檻喺細路數據上仲分得開人（冇一格 ≥80%）就保留 docx；(2) 否則用細路常模 p25/p75（≈ 25% 滿分／50% 部分／25% 零分）；(3) 門檻唔可以幼過量度精度（例：20fps 節奏 CV 底噪 ±11%；3D 軀幹角誤差約 2–3°）；(4) 2026-09-24 樣本增至 21 位，按常模重導，唔再係暫定。",
+ "_assist_caveat": "⚠ 09-18 部分片老師拖住細路隻手行（例如 rec_20260918_151258）。有扶持嘅平衡讀數會偏好。未自動偵測；如要分開，可以用「大人髖部離細路 <0.5m 持續 >50% 線上時間」標記。",
+ "_scoring_method": "2026-09-25 用戶揀分檔內按比例（option 2）：部分檔按貼近滿分門檻嘅程度落 docx 部分範圍；零分檔由範圍頂跌到底線 floor（全班 p10／p90）先 0 分。計數類（掉球／碰欄杆／跌倒）用 count_points 逐次定分，每多一次都扣。"
+}

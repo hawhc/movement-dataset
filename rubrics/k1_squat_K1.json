@@ -1,0 +1,157 @@
+{
+ "_note": "現行準則 = 《K1_Physical_Assessment_Criteria_Optimized.md》上學期 大肌肉發展 第 2 條「原地深蹲｜拍攝角度：正面」，五條 25/25/20/15/15 = 100。常模底：13 段錄影（2026-09-15 14:45–14:58）、27 位受測者。原地類唔可以自己自標定 —— 借同場 K3 平衡線＋單手拍球 rec_20260915_150704（移動類，用戶手畫 ROI yyc_k1_20260918＋2D 企姿守門自標定，BA 重投影約 5px）。量測幾何同 game7-4cam-3d/backend/app/rubrics/k1_squat.py（COCO-17 3D）一致。 2026-09-25：垂直軸改用全場共用地面（floor_up.py，逐位擬歪 14.5°），角度類讀數重算；關節角（深度、膝）唔受影響。",
+ "movement_key": "k1_squat",
+ "movement_label": "K1 原地深蹲",
+ "grade": "K1",
+ "total": 100,
+ "not_measurable": [],
+ "did_not_perform": {
+  "score": 15,
+  "label": "鼓勵分（有參與，未做到動作）",
+  "note": "冇做到動作 = 家族前置閘判定（見 applies_when）。唔入常模；總分直接 15，唔逐列計。",
+  "applies_when": "一次完整深蹲都冇（髖角跌穿 150° → 最低 <140° → 升返過 158°）",
+  "decided_by": "用戶 2026-09-25：rec_20260915_145210 紅衫女仔（#1）全程冇蹲，「表現差，冇郁過，只可以畀少少鼓勵分」→ 15/100，只套用 K1"
+ },
+ "_bands_method": "2026-09-24 由用戶授權「根據學生表現改善準則」。原則同其他動作：(1) docx 仲分得開人就保留；(2) 否則常模 p25/p75；(3) 唔幼過量度精度（3D 軀幹角誤差約 2–3°）。樣本 25–27 位 sufficient。",
+ "_app_note": "⚠ App 端 squat_rubric.py／k1_squat_scorer.dart 用真髖角（肩-髖-膝）<100° 滿分、130° 為一般界線 —— 喺 3D 細路數據上 96% 滿分，分唔到人（係 2D 年代嘅數：正面 2D 讀深度偏高）。同步去 App 之前要改。",
+ "rows": [
+  {
+   "label": "深蹲深度",
+   "points": 25,
+   "metric": "squat_knee_min_deg",
+   "companion": "squat_hip_min_deg",
+   "direction": "lower",
+   "bands": {
+    "full": 59.7,
+    "partial": 85.8
+   },
+   "bands_source": "常模 p25/p75 (n=25)",
+   "docx": "θ_hip 最低點（23-25-27）越低越好：明顯低蹲 25｜中等 16–22｜過高 0–12",
+   "bands_rationale": "docx 冇數字。md 標 θ_hip 但關鍵點 23-25-27＝膝角，跟關鍵點（同 K3 深蹲跳）；真髖角同時出做旁證。",
+   "origin": "每次深蹲最低點膝角，取中位。",
+   "norm_n25": "p10 50.9 / p25 59.73 / p50 70.75 / p75 85.76 / p90 98.46",
+   "scoring": {
+    "full_points": 25,
+    "partial_range": [
+     16,
+     22
+    ],
+    "zero_range": [
+     0,
+     12
+    ],
+    "floor": 98.46
+   }
+  },
+  {
+   "label": "膝蓋對齊",
+   "points": 25,
+   "metric": "knee_align_deg",
+   "direction": "lower",
+   "bands": {
+    "full": 12,
+    "partial": 18
+   },
+   "bands_source": "docx",
+   "docx": "θ_align <12°：25｜12–18°：16–22｜>18°：0–12",
+   "bands_rationale": "docx 喺 25 位細路分到 52%／28%／20% —— 保留。",
+   "origin": "膝→踝 喺受測者額狀面相對垂直嘅傾角，較差一邊；只計每次最深 30% 幀。COCO-17 冇腳尖，用腳踝（k1_squat.py 同一做法）。",
+   "norm_n25": "p10 7.21 / p25 9.05 / p50 12.17 / p75 19.26 / p90 20.88",
+   "scoring": {
+    "full_points": 25,
+    "partial_range": [
+     16,
+     22
+    ],
+    "zero_range": [
+     0,
+     12
+    ],
+    "floor": 20.88
+   }
+  },
+  {
+   "label": "腳跟落地",
+   "points": 20,
+   "metric": "heel_lift_pct",
+   "direction": "lower",
+   "bands": {
+    "full": 2,
+    "partial": 10
+   },
+   "bands_source": "人手（docx 文字對應）",
+   "docx": "全程着地：20｜輕微離地：12–17｜明顯離地：0–10",
+   "bands_rationale": "「全程着地」＝ ≤2% 深蹲幀腳跟離地（容許短暫丟失，md 表頭寫明）；「輕微」＝ ≤10%。分到 54%／25%／21%。",
+   "origin": "COCO-17 冇腳跟：蹲低期間任何一邊腳踝升高 >0.09 肩寬（相對企直時）嘅幀比例（k1_squat.py 實測掃出嘅門檻）。",
+   "norm_n24": "p10 0.0 / p25 0.0 / p50 2.78 / p75 6.82 / p90 13.18",
+   "scoring": {
+    "full_points": 20,
+    "partial_range": [
+     12,
+     17
+    ],
+    "zero_range": [
+     0,
+     10
+    ],
+    "floor": 13.18
+   }
+  },
+  {
+   "label": "軀幹控制",
+   "points": 15,
+   "metric": "trunk_lat_p90_deg",
+   "companion": "trunk_p90_deg",
+   "direction": "lower",
+   "bands": {
+    "full": 12,
+    "partial": 18
+   },
+   "bands_source": "人手（量度精度）",
+   "docx": "θ_vert <18°：15｜18–25°：9–13｜>25°：0–7",
+   "bands_rationale": "正面機位 θ_vert 只見到左右傾（深蹲前傾 3D p50 48°，卡總傾角會九成零分）。2026-09-25 改用全場共用地面之後，左右傾 p25–p75 只差 2.8°（6.6–9.4°），低過量度誤差 —— 呢列喺 K1 深蹲真係分唔到人（細路蹲落去好少側傾）。保留 12°／18° 只捉明顯側傾，84% 滿分。",
+   "origin": "肩髖軀幹向量偏離前後垂直平面嘅角度 p90（每次深蹲），取中位。",
+   "norm_n25": "p10 5.26 / p25 6.6 / p50 8.15 / p75 9.36 / p90 16.21",
+   "scoring": {
+    "full_points": 15,
+    "partial_range": [
+     9,
+     13
+    ],
+    "zero_range": [
+     0,
+     7
+    ],
+    "floor": 31.24
+   }
+  },
+  {
+   "label": "整體穩定",
+   "points": 15,
+   "metric": "hip_sway_lat_pct_leg",
+   "direction": "lower",
+   "bands": {
+    "full": 13.8,
+    "partial": 28.1
+   },
+   "bands_source": "常模 p25/p75 (n=25)",
+   "docx": "ΔX_hip <10cm：15｜10–14cm：9–13｜>14cm：0–7",
+   "bands_rationale": "docx 用 cm，公制錨點未定案；改 %腿長 常模。",
+   "origin": "每次深蹲期間髖部左右擺幅 ÷ 腿長，取中位。",
+   "norm_n25": "p10 9.42 / p25 13.89 / p50 18.23 / p75 26.02 / p90 41.55",
+   "scoring": {
+    "full_points": 15,
+    "partial_range": [
+     9,
+     13
+    ],
+    "zero_range": [
+     0,
+     7
+    ],
+    "floor": 41.55
+   }
+  }
+ ],
+ "_scoring_method": "2026-09-25 用戶揀分檔內按比例（option 2）：部分檔按貼近滿分門檻嘅程度落 docx 部分範圍；零分檔由範圍頂跌到底線 floor（全班 p10／p90）先 0 分。計數類（掉球／碰欄杆／跌倒）用 count_points 逐次定分，每多一次都扣。"
+}

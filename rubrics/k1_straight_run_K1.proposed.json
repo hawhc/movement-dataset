@@ -1,0 +1,227 @@
+{
+ "_note": "由細路常模導出嘅建議門檻，未經人手審批，唔好直接覆蓋現行準則",
+ "movement_key": "k1_straight_run",
+ "grade": "K1",
+ "n_subjects": 27,
+ "sufficient": true,
+ "rows": [
+  {
+   "label": "原地穩定度",
+   "points": 25,
+   "metric": "drift_from_start_cm",
+   "direction": "lower",
+   "bands": {
+    "full": 18.1,
+    "partial": 53.9
+   },
+   "docx": "<15cm:25; 15–20cm:16–22; >20cm:0–12",
+   "origin": "docx 數字門檻（2026-08-18 由「身體直線度」改過嚟，原地跑先有意義）",
+   "bands_source": "常模 p25/p75 (n=15)",
+   "bands_rationale": "docx 15／20cm 令 67% 細路零分。2026-09-24 改咗量度窗口：只計第一至最後一個膝抬循環（原本計到片尾，包埋行返去坐）；重投影核過 095915#0（向前跑咗）、100144#0（兜圈跑）嘅大飄移係真。⚠ cm 係肩寬錨點尺度，同其他 cm 讀數一樣未定案。",
+   "norm_n15": "p10 16.09 / p25 18.1 / p50 31.25 / p75 53.94 / p90 90.21",
+   "scoring": {
+    "full_points": 25,
+    "partial_range": [
+     16,
+     22
+    ],
+    "zero_range": [
+     0,
+     12
+    ],
+    "floor": 90.21
+   },
+   "proposed": {
+    "full": 25.09,
+    "partial": 64.28
+   },
+   "proposed_from": [
+    "p25",
+    "p75"
+   ],
+   "n_subjects": 22
+  },
+  {
+   "label": "膝蓋抬高",
+   "points": 20,
+   "metric": "cyc_knee_lift_L_deg",
+   "companion": "cyc_knee_lift_R_deg",
+   "direction": "higher",
+   "bands": {
+    "full": 48.4,
+    "partial": 30.8
+   },
+   "docx": "明顯抬腿:20; 輕微:12–17; 幾乎無:0–10",
+   "origin": "只有文字描述，冇數字 —— 必須由細路數據導出",
+   "bands_source": "常模 p75/p25 (n=15)",
+   "bands_rationale": "docx 只有文字（明顯抬腿／輕微／幾乎無）。",
+   "norm_n15": "p10 25.72 / p25 30.76 / p50 37.18 / p75 48.36 / p90 60.48",
+   "scoring": {
+    "full_points": 20,
+    "partial_range": [
+     12,
+     17
+    ],
+    "zero_range": [
+     0,
+     10
+    ],
+    "floor": 25.72
+   },
+   "proposed": {
+    "full": 61.36,
+    "partial": 32.98
+   },
+   "proposed_from": [
+    "p75",
+    "p25"
+   ],
+   "n_subjects": 22
+  },
+  {
+   "label": "手臂擺動・左右對稱",
+   "points": 10,
+   "metric": "elbow_asym_deg",
+   "direction": "lower",
+   "bands": {
+    "full": 10.7,
+    "partial": 21.2
+   },
+   "docx": "有擺動+對稱:20; 只達其一:12–17; 幾乎無:0–10（對稱門檻 <25°）",
+   "origin": "docx 有 25° 呢個數；partial 40 係暫定，等數據校",
+   "bands_source": "常模 p25/p75 (n=16)",
+   "bands_rationale": "docx 25° 令 88% 滿分，分唔到人。",
+   "norm_n16": "p10 4.66 / p25 10.65 / p50 13.04 / p75 21.21 / p90 29.45",
+   "scoring": {
+    "full_points": 10,
+    "partial_range": [
+     6,
+     8
+    ],
+    "zero_range": [
+     0,
+     4
+    ],
+    "floor": 30.66
+   },
+   "proposed": {
+    "full": 7.27,
+    "partial": 23.09
+   },
+   "proposed_from": [
+    "p25",
+    "p75"
+   ],
+   "n_subjects": 26
+  },
+  {
+   "label": "手臂擺動・幅度",
+   "points": 10,
+   "metric": "elbow_rom_L_deg",
+   "companion": "elbow_rom_R_deg",
+   "direction": "higher",
+   "bands": {
+    "full": 86.2,
+    "partial": 51.7
+   },
+   "docx": "「大致有擺動」",
+   "origin": "只有文字描述 —— 必須由細路數據導出",
+   "bands_source": "常模 p75/p25 (n=16)",
+   "bands_rationale": "docx 只有文字（大致有擺動）。",
+   "norm_n16": "p10 48.08 / p25 51.7 / p50 66.28 / p75 86.16 / p90 90.22",
+   "scoring": {
+    "full_points": 10,
+    "partial_range": [
+     6,
+     8
+    ],
+    "zero_range": [
+     0,
+     4
+    ],
+    "floor": 49.47
+   },
+   "proposed": {
+    "full": 90.28,
+    "partial": 52.84
+   },
+   "proposed_from": [
+    "p75",
+    "p25"
+   ],
+   "n_subjects": 26
+  },
+  {
+   "label": "步伐規律性",
+   "points": 20,
+   "metric": "cycle_cv_pct",
+   "direction": "lower",
+   "bands": {
+    "full": 30.9,
+    "partial": 40.0
+   },
+   "docx": "良好:20; 一般:12–17; 混亂:0–10",
+   "origin": "只有文字描述 —— 必須由細路數據導出",
+   "bands_source": "常模 p25/p75 (n=13)",
+   "bands_rationale": "docx 只有文字；滿分線高過 20fps 底噪 11%。",
+   "norm_n13": "p10 24.04 / p25 30.9 / p50 37.69 / p75 39.99 / p90 49.25",
+   "scoring": {
+    "full_points": 20,
+    "partial_range": [
+     12,
+     17
+    ],
+    "zero_range": [
+     0,
+     10
+    ],
+    "floor": 49.25
+   },
+   "proposed": {
+    "full": 24.58,
+    "partial": 39.37
+   },
+   "proposed_from": [
+    "p25",
+    "p75"
+   ],
+   "n_subjects": 20
+  },
+  {
+   "label": "動作連貫性",
+   "points": 15,
+   "metric": "longest_pause_s",
+   "direction": "lower",
+   "bands": {
+    "full": 0.6,
+    "partial": 1.0
+   },
+   "docx": "t_pause < 0.6s 良好",
+   "origin": "docx 數字門檻（2026-08-04 由 0.4s 放寬到 0.6s）；partial 1.0 係暫定",
+   "bands_source": "docx",
+   "bands_rationale": "docx 0.6s 分到 20%／27%／53%，冇一格 ≥80% —— 按原則保留；⚠ 但一半細路零分，偏嚴，係咪要放寬請老師決定。",
+   "norm_n15": "p10 0.44 / p25 0.68 / p50 1.1 / p75 1.2 / p90 1.45",
+   "scoring": {
+    "full_points": 15,
+    "partial_range": [
+     9,
+     13
+    ],
+    "zero_range": [
+     0,
+     7
+    ],
+    "floor": 1.45
+   },
+   "proposed": {
+    "full": 0.71,
+    "partial": 1.23
+   },
+   "proposed_from": [
+    "p25",
+    "p75"
+   ],
+   "n_subjects": 22
+  }
+ ]
+}

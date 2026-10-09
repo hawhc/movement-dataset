@@ -1,0 +1,103 @@
+{
+ "_note": "現行準則（抄自 GAME7_K1-K3_評分準則總表.md 第 82 條）對應到 ingest.py 嘅指標欄位。分數用官方五指標表頭（25/25/20/15/15），手臂擺動同流暢度各拆兩條可量度嘅子項。bands 為 null = 準則本身冇數字門檻，正好由數據定。compare_rubric.py 攞呢份同 norms/ 並排。",
+ "movement_key": "k3_sprint_agility_ladder_high_knees",
+ "movement_label": "K3 加速衝刺跑入敏捷梯（高膝抬腿）",
+ "grade": "K3",
+ "total": 100,
+ "not_measurable": [
+  {
+   "label": "步法準確度（每格踩幾多腳）",
+   "docx_points": 25,
+   "why": "要敏捷梯本身嘅幾何（格仔位置）先計到踩中冇。pose3d.npz 得人體 17 個關節，冇梯。要做就要喺 ROI 工具度標梯嘅四角，或者用 obj_* 偵測梯格。",
+   "現況": "呢 25 分暫時由『膝蓋抬高』同『步伐規律性』分擔"
+  },
+  {
+   "label": "身體直線度（髖部左右偏移 < 10cm）",
+   "docx_points": 15,
+   "why": "docx 要嘅係髖中點相對跑線嘅橫向偏移，ingest 冇量。已用 trunk_lean_deg（軀幹前傾角）頂替 —— 唔係同一件事，要記住。"
+  }
+ ],
+ "did_not_perform": {
+  "score": 30,
+  "label": "基礎階段（有參與，未做到動作）",
+  "note": "同 K1 一致：did_perform=false 只係話唔好出節奏類指標，唔等於 0 分。呢個底分係教學決定。呢批 38 段錄影入面 0 位觸發（全部細路都真係跑咗），所以呢個數未經本動作驗證。",
+  "decided_by": "用戶 2026-09-15",
+  "applies_when": "metrics.json 嘅 did_perform == false"
+ },
+ "rows": [
+  {
+   "label": "膝蓋抬高（高膝）",
+   "points": 25,
+   "metric": "cyc_knee_lift_L_deg",
+   "companion": "cyc_knee_lift_R_deg",
+   "direction": "higher",
+   "bands": {
+    "full": 60,
+    "partial": 45
+   },
+   "docx": "抬腿最高點 60–90°:20; 其餘:12–17",
+   "origin": "docx 有數字（60–90°），但嗰個係 2D 投影年代嘅數 —— 本次 3D 常模 p50 只得 48°、p90 62°，即係照用 60° 會有九成 K3 細路唔合格。partial 45 係暫定。"
+  },
+  {
+   "label": "身體直線度（軀幹前傾）",
+   "points": 25,
+   "metric": "trunk_lean_deg",
+   "direction": "lower",
+   "bands": null,
+   "docx": "髖部左右偏移 <8cm:15; 8–10cm:10–13; >10cm:0–8",
+   "origin": "docx 講嘅係左右偏移，ingest 冇量到 —— 改用軀幹前傾角，門檻必須由數據導出"
+  },
+  {
+   "label": "步伐規律性",
+   "points": 20,
+   "metric": "cycle_cv_pct",
+   "direction": "lower",
+   "bands": null,
+   "docx": "良好:20; 一般:12–17; 混亂:0–10",
+   "origin": "只有文字描述 —— 必須由細路數據導出"
+  },
+  {
+   "label": "手臂擺動・幅度",
+   "points": 8,
+   "metric": "elbow_rom_L_deg",
+   "companion": "elbow_rom_R_deg",
+   "direction": "higher",
+   "bands": null,
+   "docx": "「手臂擺動」只有指標名，冇細項",
+   "origin": "只有文字描述 —— 必須由細路數據導出"
+  },
+  {
+   "label": "手臂擺動・左右對稱",
+   "points": 7,
+   "metric": "elbow_asym_deg",
+   "direction": "lower",
+   "bands": {
+    "full": 25,
+    "partial": 40
+   },
+   "docx": "沿用 K1/K2 嘅 25° 對稱門檻",
+   "origin": "跨動作沿用嘅數，未經 K3 校準"
+  },
+  {
+   "label": "有方向的流暢度・無停頓",
+   "points": 8,
+   "metric": "longest_pause_s",
+   "direction": "lower",
+   "bands": {
+    "full": 0.6,
+    "partial": 1.0
+   },
+   "docx": "流暢:15; 輕微:9–13; 明顯:0–8（t_pause < 0.6s 良好）",
+   "origin": "沿用 K1 嘅 0.6s；K3 係衝刺，門檻應該更嚴"
+  },
+  {
+   "label": "有方向的流暢度・加速",
+   "points": 7,
+   "metric": "peak_speed_mps",
+   "direction": "higher",
+   "bands": null,
+   "docx": "加速節奏 明顯:15; 輕微:9–13; 無:0–8",
+   "origin": "只有文字描述 —— 必須由細路數據導出"
+  }
+ ]
+}
